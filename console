@@ -3,7 +3,8 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Symfony\Component\Console\Input\ArgvInput;
+use Faker\Factory;
+use SenseException\PartialIndex\InitCommand;
 use Symfony\Component\Console\Application;
 
 use SenseException\PartialIndex\XmlConfigReader;
@@ -19,7 +20,10 @@ $xmlConfig->open($xmlConfigFile);
 
 $config = (new XmlConfigReader())->readConfig($xmlConfig);
 
-$pdo = new PDO('pgsql:dbname=' . $config['database'] . ';port=' . $config['port'] . ';host=' . $config['hostname'], $config['username'], $config['password']);
-
+$pdo = new PDO('pgsql:dbname=' . $config['database'] . ';port=' . $config['port'] . ';host=' .
+    $config['hostname'], $config['username'], $config['password']);
 
 $application = new Application();
+$application->add(new InitCommand('init', $pdo, Factory::create()));
+
+$application->run();
