@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Application;
+
+use SenseException\PartialIndex\XmlConfigReader;
+
+$xmlConfigFile = __DIR__ . '/config.xml';
+
+if (!file_exists($xmlConfigFile)) {
+    throw new LogicException('config.xml not found. Please use config.xml.dist to create your config.xml for PostgreSQL.');
+}
+
+$xmlConfig = new XMLReader();
+$xmlConfig->open($xmlConfigFile);
+
+$config = (new XmlConfigReader())->readConfig($xmlConfig);
+
+$pdo = new PDO('pgsql:dbname=' . $config['database'] . ';port=' . $config['port'] . ';host=' . $config['hostname'], $config['username'], $config['password']);
+
+
+$application = new Application();

@@ -1,0 +1,25 @@
+{
+    "name": "senseexception/postgres-partial-index",
+    "description": "Example for PostgreSQL Partial Indexes",
+    "autoload": {
+        "psr-4": {
+            "SenseException\\PartialIndex\\": ""
+        }
+    },
+    "require": {
+        "php": "^7.0",
+        "fzaninotto/faker": "^1.6",
+        "jdorn/sql-formatter": "^1.2",
+        "symfony/console": "^3.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Claudio Zizza",
+            "email": "claudio@budgegeria.de"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^3.1"
+    }
+}

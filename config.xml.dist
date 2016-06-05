@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <hostname>localhost</hostname>
+    <port>5432</port>
+    <username>user</username>
+    <password>password</password>
+    <database>postgre_test</database>
+</config>
