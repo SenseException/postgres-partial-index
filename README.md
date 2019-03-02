@@ -1,5 +1,7 @@
 # Postgres: Comparing Normal Index with Partial Index #
 
+This initiallization code was used for the blog post [Increase SQL performance with partial indices](https://php.budgegeria.de/blog/increase-sql-performance-with-partial-indices)
+
 ## Install ##
 
 1. Install PHP dependencies with Composer
